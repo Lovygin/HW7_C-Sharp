@@ -1,7 +1,7 @@
 ﻿//Created two-dimensional array.
 //Find in given array value with indicis m && n then user enter to consol.
 
-using System;
+/*using System;
 using static System.Console;
 Clear();
 WriteLine("Please, enter number of rows");
@@ -40,7 +40,7 @@ int IndexSearchIntArray(int[,] array, int indexRow, int IndexColumn)
         return FindValue;
     }
     else{WriteLine("This value not find");}// return -1; - если значение не найдено, метод вернет -1
-}
+}*/
 
 
 
@@ -60,7 +60,7 @@ class Program
         Console.WriteLine("Please enter number of columns:");
         int columns = int.Parse(Console.ReadLine());
 
-        Console.WriteLine("Please enter index 'n' of row to search:");
+        Console.WriteLine("Please enter index 'n' of s to search:");
         int n = int.Parse(Console.ReadLine());
 
         Console.WriteLine("Please enter index 'm' of column to search:");
@@ -113,3 +113,50 @@ class Program
     }
 }
 */
+
+using System;
+using static System.Console;
+
+Clear();
+
+WriteLine("Please, enter number of rows");
+int rows = int.Parse(ReadLine());
+WriteLine("Please, enter number of columns");
+int columns = int.Parse(ReadLine());
+WriteLine("Please, enter index of rows for searcing in array");
+int n = int.Parse(ReadLine());
+WriteLine("Please, enter index of columns for searcing in array");
+int m = int.Parse(ReadLine());
+
+int[,] myArray = GetArray(rows,columns);
+WriteLine();
+int FindNumber = SearchNumberInArray(myArray,n,m);
+
+int[,] GetArray(int rows, int columns)
+{
+    int[,] array = new int [rows,columns];
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < columns; j++)
+        {
+            array[i,j] = new Random().Next(100);
+        }
+    }
+    return array;
+}
+
+int SearchNumberInArray(int[,] array, int row, int colum)
+{
+    if(row > 0 && row < array.GetLength(0))
+    {
+        if(colum > 0 && colum < array.GetLength(1))
+        {
+            WriteLine("Desired sign: " + array[row,colum]);
+            return array[row,colum];
+        }
+        else WriteLine("This value not found");
+        return -1;
+    }
+    else WriteLine("This value not found");
+    return -1;
+}
