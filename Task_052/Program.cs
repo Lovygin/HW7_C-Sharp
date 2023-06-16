@@ -16,13 +16,12 @@ int[,] myArray = GetPrintArray(rows,columns);
 WriteLine();
 int[] averageEachColumns = AverageInEachColumn(myArray, rows);
 
-
 int[,] GetPrintArray(int rows, int columns)
 {
     int[,] array = new int [rows,columns];
     int count = 0;
     for (int i = 0; i < rows; i++, count++)
-    {
+    {   
         for (int j = 0; j < columns; j++)
         {
             array[i,j] = new Random().Next(100);
